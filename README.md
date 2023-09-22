@@ -17,25 +17,42 @@ User melakukan berbagai aktivitas dengan menggunakan protokol FTP. Salah satunya
     Berapakah sequence number (raw) pada packet yang menunjukkan aktivitas tersebut? 
 </li>
 
+- 258040667
+
 <li>
     Berapakah acknowledge number (raw) pada packet yang menunjukkan aktivitas tersebut?
 </li>
+
+- 1044861039
 
 <li>
     Berapakah sequence number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
 </li>
 
+- 1044861039
+
 <li>
     Berapakah acknowledge number (raw) pada packet yang menunjukkan response dari aktivitas tersebut?
 </li>
 
+- 258040696
+
 </ol>
 
 
-
 ## Jawaban Soal 1 :
+Untuk menjawab soal nomor 1 kita melakukan search pada display filter:
+```
+ftp
+```
+Tujuan dari filter diatas adalah untuk menyaring paket FTP.
 
-- 
+
+![no1](https://github.com/LatomTrust/Jarkom-Modul-1-B21-2023/assets/114276069/2a68ef54-162c-47fb-ab67-c028fa49b56d)
+
+
+Lalu, karena pada soal tertulis mengunggah suatu file, maka paket contains STOR, yang ada pada paket 147. Lalu response terdapat pada paket 149.
+
 
 --------------------------------
 
@@ -45,6 +62,9 @@ Sebutkan web server yang digunakan pada portal praktikum Jaringan Komputer!
 
 ## Jawaban Soal 2 :
 
+Langkah pertama adalah dengan menerapkan filter dengan menggunakan perintah "http contains "10.21.78.111"". Filter ini akan menghasilkan tampilan yang hanya berisi paket-paket yang mengandung informasi terkait alamat IP 10.21.78.111. Setelah filter diterapkan, langkah selanjutnya adalah memilih salah satu paket yang terpilih dengan mengklik kanan. Setelah itu, pilih opsi "follow TCP STREAM" untuk mengikuti aliran data TCP yang terkait dengan paket tersebut. Lalu dapat dilihat servernya adalah gunicorn.
+
+![no2](https://github.com/LatomTrust/Jarkom-Modul-1-B21-2023/assets/114276069/e5da5203-b312-4d81-a530-82536bba3a0d)
 
 --------------------------------
 ## Soal 3 :
@@ -166,16 +186,20 @@ Setelah, itu salin source address pada file nomor 7812 lalu decrypt menggunakan 
 Berapa jumlah packet yang menuju IP 184.87.193.88?
 
 ## Jawaban Soal 7 :
-- 
-- 
-- 
+Langkah pertama adalah dengan menerapkan filter dengan menggunakan perintah "ip.dst == 184.87.193.88". Setelah filter diterapkan, dapat dihitung terdapat 6 paket yang menuju IP 184.87.193.88.
+
+![no7](https://github.com/LatomTrust/Jarkom-Modul-1-B21-2023/assets/114276069/08b8d0df-61c2-47f7-a772-37a5f3d214f2)
+
+
 --------------------------------
 ## Soal 8 :
 
 Berikan kueri filter sehingga wireshark hanya mengambil semua protokol paket yang menuju port 80! (Jika terdapat lebih dari 1 port, maka urutkan sesuai dengan abjad)
-## Jawaban Soal 8 :
 
--
+## Jawaban Soal 8 :
+Filter untuk mengambil semua protokol paket yang menuju port 80 adalah tcp.dstport == 80 || udp.dstport == 80.
+
+![no8](https://github.com/LatomTrust/Jarkom-Modul-1-B21-2023/assets/114276069/a2cabc90-26d7-4eb2-aeba-540d8e6e852d)
 
 --------------------------------
 
@@ -202,4 +226,7 @@ Penjelasan queri diatas adalah:
 Sebutkan kredensial yang benar ketika user mencoba login menggunakan Telnet
 
 ## Jawaban Soal 10 :
--
+Untuk menjawab soal ini, dilakukan dengan mencari filter telnet, lalu buka paket paling bawah, lalu follow TCP Stream. Lalu dapat dilihat username dan passwordnya
+
+![no10](https://github.com/LatomTrust/Jarkom-Modul-1-B21-2023/assets/114276069/94cb0b27-12ec-4e7c-b317-9290b95a6d2a)
+
